@@ -18,7 +18,7 @@
     <ClInclude Include="minhook\minhook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="memory.hpp">
+    <ClInclude Include="sig_scan.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="keyauth_structs.hpp">

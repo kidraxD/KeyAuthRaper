@@ -1,7 +1,10 @@
-#include "memory.hpp"
+#include <iostream>
+#include <vector>
+#include <string>
+
+#include "sig_scan.hpp"
 #include "minhook/minhook.h"
 #include "keyauth_structs.hpp"
-#include <iostream>
 
 void handle_data(api* keyauth_api)
 {

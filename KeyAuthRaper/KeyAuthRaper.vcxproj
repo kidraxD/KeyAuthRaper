@@ -142,7 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="keyauth_structs.hpp" />
-    <ClInclude Include="memory.hpp" />
+    <ClInclude Include="sig_scan.hpp" />
     <ClInclude Include="minhook\minhook.h" />
   </ItemGroup>
   <ItemGroup>
