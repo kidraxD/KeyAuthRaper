@@ -41,15 +41,24 @@ void run()
 {
     auto check_section_integrity = sig_scan::sig_scan("48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 84 24 ? ? ? ? 48", 0);
     if (!check_section_integrity)
+    {
+        printf("Failed to find check_section_integrity!\n");
         return;
+    }
 
     auto keyauth_license_func = sig_scan::sig_scan("48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4C 8B E2 4C 8B E9", 0);
     if (!keyauth_license_func)
+    {
+        printf("Failed to find the KeyAuth License Function!\n");
         return;
+    }
 
     auto keyauth_login_func = sig_scan::sig_scan("48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4D 8B E8 4C 8B E2 48 8B F9 48 89 4D D0", 0);
     if (!keyauth_login_func)
+    {
+        printf("Failed to find theKeyAuth Login Function!\n");
         return;
+    }
 
     auto status = MH_Initialize();
 
