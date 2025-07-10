@@ -39,21 +39,21 @@ bool hk_check_section_integrity(const char* section_name, bool fix = false)
 
 void run()
 {
-    auto check_section_integrity = sig_scan::sig_scan("48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 84 24 ? ? ? ? 48", 0);
+    auto check_section_integrity = sig_scan::sig_scan("48 8B C4 48 89 58 ? 48 89 70 ? 48 89 78 ? 55 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78", 0);
     if (!check_section_integrity)
     {
         printf("Failed to find check_section_integrity!\n");
         return;
     }
 
-    auto keyauth_license_func = sig_scan::sig_scan("48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4C 8B E2 4C 8B E9", 0);
+    auto keyauth_license_func = sig_scan::sig_scan("48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4D 8B F8", 0);
     if (!keyauth_license_func)
     {
         printf("Failed to find the KeyAuth License Function!\n");
         return;
     }
 
-    auto keyauth_login_func = sig_scan::sig_scan("48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4D 8B E8 4C 8B E2 48 8B F9 48 89 4D D0", 0);
+    auto keyauth_login_func = sig_scan::sig_scan("40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4D 8B E1 4C 89 4D ? 4D 8B F8 4C 89 45 ? 4C 8B F2 48 89 55 ? 48 8B F1 48 89 4D ? 48 89 95 ? ? ? ? 4C 89 85 ? ? ? ? 4C 89 8D ? ? ? ? 45 33 ED", 0);
     if (!keyauth_login_func)
     {
         printf("Failed to find theKeyAuth Login Function!\n");

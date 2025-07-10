@@ -12,7 +12,14 @@ struct channel_struct
 class api {
 public:
 
-	std::string name, ownerid, secret, version, url, path;
+	std::string name, ownerid, version, url, path;
+	static bool debug;
+
+	api(std::string name, std::string ownerid, std::string version, std::string url, std::string path, bool debugParameter = false)
+		: name(name), ownerid(ownerid), version(version), url(url), path(path)
+	{
+		setDebug(debugParameter);
+	}
 
 	class subscriptions_class {
 	public:
@@ -41,6 +48,7 @@ public:
 		std::string numKeys;
 		std::string version;
 		std::string customerPanelLink;
+		std::string downloadLink;
 	};
 
 	class responsedata {
@@ -49,12 +57,23 @@ public:
 		std::vector<channel_struct> channeldata;
 		bool success{};
 		std::string message;
+		bool isPaid{};
+	};
+
+	bool activate = false;
+	class Tfa {
+	public:
+		std::string secret;
+		std::string link;
+	private:
 	};
 
 	userdata user_data;
 	appdata app_data;
 	responsedata response;
+	Tfa tfa;
 
 private:
 	std::string sessionid, enckey;
+	static void setDebug(bool value);
 };
